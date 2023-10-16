@@ -1,4 +1,4 @@
-package by.it_academy.jd2.task_sql.dao.data_source;
+package by.it_academy.jd2.task_sql.dao.ds;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
