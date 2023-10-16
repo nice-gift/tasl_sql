@@ -36,13 +36,13 @@ public class ApiFlightServlet extends HttpServlet {
 
         String scheduledDepartureRaw = req.getParameter(SCHEDULED_DEPARTURE_PARAM);
         OffsetDateTime scheduledDeparture = null;
-        if (scheduledDepartureRaw != null || !scheduledDepartureRaw.isBlank()) {
+        if (scheduledDepartureRaw != null && !scheduledDepartureRaw.isBlank()) {
             scheduledDeparture = OffsetDateTime.parse(scheduledDepartureRaw, formatter);
         }
 
         String scheduledArrivalRaw = req.getParameter(SCHEDULED_ARRIVAL_PARAM);
         OffsetDateTime scheduledArrival = null;
-        if (scheduledArrivalRaw != null || !scheduledArrivalRaw.isBlank()) {
+        if (scheduledArrivalRaw != null && !scheduledArrivalRaw.isBlank()) {
             scheduledArrival = OffsetDateTime.parse(scheduledArrivalRaw, formatter);
         }
 

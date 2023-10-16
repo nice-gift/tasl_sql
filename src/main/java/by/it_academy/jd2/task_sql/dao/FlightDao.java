@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDao implements IFlightDao {
-    public static final String URL_GET_ALL_FLIGHT = "SELECT flight_id, flight_no, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport, status, aircraft_code, actual_departure, actual_arrival\n" +
-            "\tFROM bookings.flights ORDER BY actual_departure";
+    public static final String URL_GET_ALL_FLIGHT = "SELECT flight_id, flight_no, scheduled_departure, scheduled_departure_local, scheduled_arrival, scheduled_arrival_local, scheduled_duration, departure_airport, departure_airport_name, departure_city, arrival_airport, arrival_airport_name, arrival_city, status, aircraft_code, actual_departure, actual_departure_local, actual_arrival, actual_arrival_local, actual_duration FROM bookings.flights_v";
     //    public static final String URL_GET_FLIGHT_FROM_PAGE = "SELECT flight_id, flight_no, scheduled_departure, scheduled_arrival, departure_airport, arrival_airport, status, aircraft_code, actual_departure, actual_arrival\n" +
 //            "\tFROM bookings.flights ORDER BY actual_departure LIMIT ? OFFSET ?";
     public static final String GET_COUNT = "SELECT count(*) FROM bookings.flights";
@@ -134,8 +133,9 @@ public class FlightDao implements IFlightDao {
                 while (rs.next()) {
                     flights.add(map(rs));
                 }
+
+                return flights;
             }
-            return flights;
         } catch (SQLException e) {
             throw new IllegalStateException("Ошибка получения информации об аэропортах", e);
         }
