@@ -1,8 +1,9 @@
 package by.it_academy.jd2.task_sql.service;
 
 import by.it_academy.jd2.task_sql.core.dto.Aircraft;
-import by.it_academy.jd2.task_sql.dao.api.IAircraftDao;
+import by.it_academy.jd2.task_sql.dao_hibernate.dao.api.IAircraftDao;
 import by.it_academy.jd2.task_sql.service.api.IAircraftService;
+
 
 import java.util.List;
 import java.util.stream.Collectors;

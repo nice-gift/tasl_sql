@@ -1,6 +1,6 @@
 package by.it_academy.jd2.task_sql.service.factory;
 
-import by.it_academy.jd2.task_sql.dao.factory.AircraftDaoFactory;
+import by.it_academy.jd2.task_sql.dao_hibernate.dao.factory.AircraftDaoFactory;
 import by.it_academy.jd2.task_sql.service.AircraftService;
 import by.it_academy.jd2.task_sql.service.api.IAircraftService;
 

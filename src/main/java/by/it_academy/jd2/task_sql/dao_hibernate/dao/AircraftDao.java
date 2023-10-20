@@ -4,6 +4,8 @@ import by.it_academy.jd2.task_sql.dao_hibernate.dao.api.IAircraftDao;
 import by.it_academy.jd2.task_sql.dao_hibernate.dao.entity.AircraftEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 
 import java.util.List;
 
@@ -17,6 +19,9 @@ public class AircraftDao implements IAircraftDao {
     @Override
     public List<AircraftEntity> getAll() {
         EntityManager em = emf.createEntityManager();
-        em.
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<AircraftEntity> query = cb.createQuery(AircraftEntity.class);
+        List<AircraftEntity> list = em.createQuery(query).getResultList();
+        return list;
     }
 }
