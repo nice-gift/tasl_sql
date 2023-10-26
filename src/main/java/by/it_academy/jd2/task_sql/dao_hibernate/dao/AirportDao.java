@@ -4,8 +4,10 @@ import by.it_academy.jd2.task_sql.dao_hibernate.dao.api.IAirportDao;
 import by.it_academy.jd2.task_sql.dao_hibernate.dao.entity.AirportEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
@@ -18,10 +20,21 @@ public class AirportDao implements IAirportDao {
 
     @Override
     public List<AirportEntity> getAll() {
+//        EntityManager em = emf.createEntityManager();
+////        CriteriaBuilder cb = em.getCriteriaBuilder();
+////        CriteriaQuery<?> query = cb.createQuery();
+////        query.from(AirportEntity.class);
+////        return (List<AirportEntity>)em.createQuery(query).getResultList();
+
         EntityManager em = emf.createEntityManager();
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<?> query = cb.createQuery();
-        query.from(AirportEntity.class);
-        return (List<AirportEntity>)em.createQuery(query).getResultList();
+        CriteriaQuery<AirportEntity> critQuery = cb.createQuery(AirportEntity.class);
+
+        Root<AirportEntity> root = critQuery.from(AirportEntity.class);
+        critQuery.select(root);
+
+        Query query = em.createQuery(critQuery);
+        List<AirportEntity> results = query.getResultList();
+        return results;
     }
 }
