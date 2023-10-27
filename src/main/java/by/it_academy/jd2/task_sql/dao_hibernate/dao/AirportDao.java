@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
 import java.util.List;
@@ -31,7 +32,15 @@ public class AirportDao implements IAirportDao {
         CriteriaQuery<AirportEntity> critQuery = cb.createQuery(AirportEntity.class);
 
         Root<AirportEntity> root = critQuery.from(AirportEntity.class);
-        critQuery.select(root);
+//        critQuery.select(root).where(root.get("airportСode").in("YKS", "OVS"));
+
+        Predicate[] predicates = new Predicate[2];
+        predicates[0] = cb.like(root.get("timezone"), "Asia/Yekaterinburg");
+        predicates[1] = cb.like(root.get("airportСode"), "OVS");
+        critQuery.select(root).where(predicates);
+
+//        все записи
+//        critQuery.select(critQuery.from(AirportEntity.class));
 
         Query query = em.createQuery(critQuery);
         List<AirportEntity> results = query.getResultList();
