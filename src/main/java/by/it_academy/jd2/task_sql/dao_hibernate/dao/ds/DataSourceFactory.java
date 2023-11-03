@@ -15,7 +15,7 @@ public class DataSourceFactory {
         } catch (PropertyVetoException e) {
             throw new IllegalStateException("Ошибка инициализации драйвера базы данных", e);
         }
-        ds.setJdbcUrl("jdbc:postgresql://localhost:5432/demo");
+        ds.setJdbcUrl("jdbc:postgresql://db:5432/demo");
         ds.setUser("postgres");
         ds.setPassword("1234");
     }

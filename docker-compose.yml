@@ -1,0 +1,15 @@
+services:
+  app:
+    image: itacademy/tasksql:1.0
+    build: .
+    ports:
+      - "8000:80"
+  db:
+    image: itacademy/postgres:1.0
+    build: postgres
+    volumes:
+      - "D:/test:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: demo
