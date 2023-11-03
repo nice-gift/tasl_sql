@@ -3,7 +3,7 @@ services:
     image: itacademy/tasksql:1.0
     build: .
     ports:
-      - "8000:80"
+      - "80:8080"
   db:
     image: itacademy/postgres:1.0
     build: postgres
